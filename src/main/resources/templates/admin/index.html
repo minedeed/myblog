@@ -44,14 +44,14 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:" id="changePage" url="http://www.baidu.com">控制台</a>
+                    <a class="changePage" href="javascript:"  url="http://www.baidu.com">控制台</a>
 
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">文章管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表一</a></dd>
-                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="javascript:;">文章管理</a></dd>
+                        <dd><a href="javascript:" class="changePage" url="/pageredirect?pageName=admin/writeArticle.html">写文章</a></dd>
                         <dd><a href="">超链接</a></dd>
                     </dl>
                 </li>
@@ -84,10 +84,16 @@
     layui.use(['jquery',], function(args){
         var $= layui.jquery;
 
-        $("#changePage").click(function() {
+        $(".changePage").click(function() {
+
         var url = $(this).attr("url");
         $("#mainpage").attr("src",url);
         })
+    });
+
+    $(document).on('click', '.changePage', function(e){
+        var url = $(this).attr("url");
+        $("#mainpage").attr("src",url);
     });
 
 </script>
